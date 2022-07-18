@@ -31,13 +31,16 @@ struct WeatherManager {
                 }
                 
                 if let safeData = data {
-                    let dataString = String(data: safeData, encoding: .utf8)
-                    print(dataString)
+                    self.parseJSON(weatherData: safeData)
                 }
             }
             
             //4. Statrt the task
             task.resume()
         }
+    }
+    
+    func parseJSON(weatherData: Data) {
+        
     }
 }

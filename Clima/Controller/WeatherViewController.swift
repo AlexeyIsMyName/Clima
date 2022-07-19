@@ -65,7 +65,8 @@ extension WeatherViewController: UITextFieldDelegate {
 
 extension WeatherViewController: WeatherManagerDelegate {
     func didFailWithError(error: Error) {
-        print(error)    }
+        print(error)
+    }
     
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
         DispatchQueue.main.async {
@@ -79,6 +80,10 @@ extension WeatherViewController: WeatherManagerDelegate {
 // MARK: - CLLocationManagerDelegate
 
 extension WeatherViewController: CLLocationManagerDelegate {
+    @IBAction func locationButtonPressed(_ sender: UIButton) {
+        locationManager.requestLocation()
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             let lat = location.coordinate.latitude
